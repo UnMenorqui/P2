@@ -12,10 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Bienvenido a tu puto menu.</h1>
+        <h1>MENU</h1>
         <h2> Bienvenido ${sessionScope.usuario}</h2>
         <div>
-             <a href="login.jsp"> Alta Vuelo </a>
+             <a href="altavuelo.jsp"> Alta Vuelo </a>
         </div>
         <div>
              <a href="login.jsp"> Alta Hotel </a>

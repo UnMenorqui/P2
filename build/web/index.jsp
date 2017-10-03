@@ -12,7 +12,18 @@
         <title>P2</title>
     </head>
     <body>
-        <h1>Hello P2</h1>
-        <a href="login.jsp"> Log In </a>
+        <div>
+           <h1>Bienvenidos a nuestra agencia de viajes!</h1> 
+        </div>
+        <div>
+           <h2>Si quieres iniciar sesión pulse aquí</h2>  
+           <a href="login.jsp"> Log In </a>
+        </div>
+        
+        <div>
+            <h2>Si aún no tiene cuenta pulse aquí</h2>
+            <a href="register.jsp"> Register </a>
+        </div>
+        
     </body>
 </html>

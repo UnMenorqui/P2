@@ -1,7 +1,7 @@
 <%-- 
-    Document   : login
-    Created on : 26-sep-2017, 16:14:46
-    Author     : Toni
+    Document   : register
+    Created on : 03-oct-2017, 11:24:49
+    Author     : aleixabrieprat
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,17 +12,22 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="login" method="post">
+        <form action="register" method="post">
             <div>
                 <label for="name"> Name: </label>
                 <input type="text" name="name" required/>                
             </div>
             
             <div>
-                <label for="password"> Password </label>
+                <label for="password"> Password: </label>
                 <input type="password" name="password" required/>
             </div>
             
+            <div>
+                <label for="password"> Repeat Password: </label>
+                <input type="password" name="password1" required/>
+            </div>
+           
             <div>
                 <input type="submit" value="Submit">
             </div>

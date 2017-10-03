@@ -15,12 +15,12 @@
         <form action="login" method="post">
             <div>
                 <label for="name"> Name: </label>
-                <input type="text" name="name" />                
+                <input type="text" name="name" required/>                
             </div>
             
             <div>
                 <label for="password"> Password </label>
-                <input type="password" name="password"/>
+                <input type="password" name="password" required/>
             </div>
             
             <div>
