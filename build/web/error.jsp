@@ -1,10 +1,8 @@
-<%-- 
-    Document   : error
-    Created on : 26-sep-2017, 16:14:58
-    Author     : Toni
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+        
+<%String error = request.getParameter("error");%>
+            
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,7 +10,7 @@
         <title>Error</title>
     </head>
     <body>
-        <h1>Error de los cojones.</h1>
+        <h1><%=error%></h1>
         <a href="login.jsp"> Log In </a>
     </body>
 </html>

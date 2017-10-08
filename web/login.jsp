@@ -1,9 +1,3 @@
-<%-- 
-    Document   : login
-    Created on : 26-sep-2017, 16:14:46
-    Author     : Toni
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

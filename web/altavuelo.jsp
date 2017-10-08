@@ -25,7 +25,7 @@
             
             <div>
                 <label for="password"> Hora de Salida: </label>
-                <input type="time" name="horasalida" required/>
+                <input type="time" name="horasalida" required value="00:00"/>
             </div>
             
             <div>
@@ -35,7 +35,7 @@
             
             <div>
                 <label for="horallegada"> Hora de llegada: </label>
-                <input type="time" name="horallegada" required/>
+                <input type="time" name="horallegada" required value="01:00"/>
             </div>
             
             <div>

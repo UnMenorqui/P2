@@ -2,7 +2,6 @@ package login;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -70,7 +69,8 @@ public class login extends HttpServlet {
 
           }
           else {
-              response.sendRedirect("error.jsp");
+              String mensaje = "The user does not exist.";
+              response.sendRedirect("error.jsp?error=" + mensaje);
           }
         }
         catch(SQLException e)

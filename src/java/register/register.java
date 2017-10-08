@@ -65,11 +65,13 @@ public class register extends HttpServlet{
                  response.sendRedirect("login.jsp");
              }
              else {
-                 response.sendRedirect("error.jsp");
+                 String mensaje = "The user already exists.";
+                 response.sendRedirect("error.jsp?error=" + mensaje);
              }
           }
           else {
-              response.sendRedirect("error.jsp");
+              String mensaje = "The two passwords are not the same.";
+              response.sendRedirect("error.jsp?error=" + mensaje);
           }
         } 
         catch(SQLException | ClassNotFoundException e)

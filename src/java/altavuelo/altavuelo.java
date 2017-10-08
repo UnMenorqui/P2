@@ -37,8 +37,7 @@ public class altavuelo extends HttpServlet {
         {            
           // load the sqlite-JDBC driver using the current class loader
           Class.forName("org.sqlite.JDBC");   
-          //java.util.Date d = new java.util.Date();
-          //out.println("La fecha actual es " + d);             
+              
           
           // create a database connection
           //connection = DriverManager.getConnection("jdbc:sqlite:F:\\AD\\Pràctica 2\\BD\\exemple.db");
@@ -54,17 +53,22 @@ public class altavuelo extends HttpServlet {
           String destino = request.getParameter("destino");
           String horallegada = request.getParameter("horallegada");
           
+          
+          /** Comparar Horas llegada/salida
+          
           LocalTime llegada = LocalTime.parse(horallegada);
           LocalTime salida = LocalTime.parse(horasalida);
           
           if (salida.compareTo(llegada) > 0) {
               response.sendRedirect("error.jsp");
           }
+          **/
           
           ResultSet rs = statement.executeQuery("select * from vuelos where id_vuelo ='"+numerovuelo+"'");
           
           if (rs.next()) {
-              response.sendRedirect("error.jsp");
+              String mensaje = "A flight with that number already exists.";
+              response.sendRedirect("error.jsp?error=" + mensaje);
           } else {
               statement.executeUpdate("insert into vuelos values('"+numerovuelo+"','"+compania+"','"+origen+"','"+horasalida+"','"+destino+"','"+horallegada+"')");
               response.sendRedirect("menu.jsp");
