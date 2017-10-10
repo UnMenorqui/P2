@@ -1,15 +1,9 @@
-<%-- 
-    Document   : register
-    Created on : 03-oct-2017, 11:24:49
-    Author     : aleixabrieprat
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Registro</title>
     </head>
     <body>
         <form action="register" method="post">
@@ -30,8 +24,7 @@
            
             <div>
                 <input type="submit" value="Submit">
-            </div>
-                
+            </div>    
         </form>
     </body>
 </html>

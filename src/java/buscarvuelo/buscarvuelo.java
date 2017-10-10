@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalTime;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,7 +48,7 @@ public class buscarvuelo extends HttpServlet {
           
           
           String numerovuelo = request.getParameter("numero");
-          String compania = request.getParameter("compañia");
+          String compania = request.getParameter("compania");
           String origen = request.getParameter("origen");
           String destino = request.getParameter("destino");
           
@@ -56,63 +57,75 @@ public class buscarvuelo extends HttpServlet {
           System.out.println("origen="+origen);
           System.out.println("destino="+destino);
           
-          
-          /*
           ResultSet rs; 
-          if (numerovuelo.equals("null")) {
-              if (compania.equals("null")) {
-                  if (origen.equals("null")) {
-                      if (destino.equals("null")) {
+          if (numerovuelo.equals("")) {
+              if (compania.equals("")) {
+                  if (origen.equals("")) {
+                      if (destino.equals("")) {
                          rs = statement.executeQuery("Select * from vuelos");
                       }
                       else {rs = statement.executeQuery("Select * from vuelos where destino='"+destino+"'");} 
                   }
                   else {
-                      if (destino.equals("null")) {rs = statement.executeQuery("Select * from vuelos where origen='"+origen+"'");}
+                      if (destino.equals("")) {rs = statement.executeQuery("Select * from vuelos where origen='"+origen+"'");}
                       else {rs = statement.executeQuery("Select * from vuelos where destino='"+destino+"' and origen='"+origen+"'");}
                   }
               }
               else {
-                  if (origen.equals("null")) {
-                      if (destino.equals("null")) {rs = statement.executeQuery("Select * from vuelos where companyia='"+compania+"'"); }
+                  if (origen.equals("")) {
+                      if (destino.equals("")) {rs = statement.executeQuery("Select * from vuelos where companyia='"+compania+"'"); }
                       else {rs = statement.executeQuery("Select * from vuelos where companyia='"+compania+"' and destino='"+destino+"'");}
                   }
                   else {
-                      if (destino.equals("null")) {rs = statement.executeQuery("Select * from vuelos where companyia='"+compania+"' and origen='"+origen+"'");}
+                      if (destino.equals("")) {rs = statement.executeQuery("Select * from vuelos where companyia='"+compania+"' and origen='"+origen+"'");}
                       else {rs = statement.executeQuery("Select * from vuelos where companyia='"+compania+"' and destino='"+destino+"' and origen='"+origen+"'");}
                   }
               }
           }
           else {
-              if (compania.equals("null")) {
-                  if (origen.equals("null")) {
-                      if (destino.equals("null")) {rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+"'");}
+              if (compania.equals("")) {
+                  if (origen.equals("")) {
+                      if (destino.equals("")) {rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+"'");}
                       else {rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+" and destino='"+destino+"'");} 
                   }
                   else {
-                      if (destino.equals("null")) {rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+" and origen='"+origen+"'");}
+                      if (destino.equals("")) {rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+" and origen='"+origen+"'");}
                       else {rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+" and destino='"+destino+"' and origen='"+origen+"'");}
                   }
               }
               else {
-                  if (origen.equals("null")) {
-                      if (destino.equals("null")) {rs = statement.executeQuery("Select * from vuelos id_vuelo='"+numerovuelo+" and where companyia='"+compania+"'"); }
+                  if (origen.equals("")) {
+                      if (destino.equals("")) {rs = statement.executeQuery("Select * from vuelos id_vuelo='"+numerovuelo+" and where companyia='"+compania+"'"); }
                       else {rs = statement.executeQuery("Select * from vuelos id_vuelo='"+numerovuelo+" and where companyia='"+compania+"' and destino='"+destino+"'");}
                   }
                   else {
-                      if (destino.equals("null")) {rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+" and companyia='"+compania+"' and origen='"+origen+"'");}
+                      if (destino.equals("")) {rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+" and companyia='"+compania+"' and origen='"+origen+"'");}
                       else {rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+" and companyia='"+compania+"' and destino='"+destino+"' and origen='"+origen+"'");}
                   }
               }
               
           }
-          if (!rs.next()) {
+          if (rs.next()) {
+              int size = rs.getRow();
+              vuelo[] vuelo = new vuelo[size];
+              int i = 0;
+              while (rs.next()) {
+                  vuelo[i] = new vuelo(
+                          rs.getInt(0), 
+                          rs.getString(1), 
+                          rs.getString(2), 
+                          rs.getString(3), 
+                          rs.getString(4), 
+                          rs.getString(5));
+                  i++;
+              }
+              request.setAttribute("vuelos", vuelo);
+              RequestDispatcher dispatcher = request.getRequestDispatcher("/buscarvuelo.jsp");
+              dispatcher.forward(request, response);
+          } else {
               String mensaje = "There is no flight with these characteristics.";
               response.sendRedirect("error.jsp?error=" + mensaje);
-          } else {
-              
           }
-          */
         } 
         catch(SQLException | ClassNotFoundException e)
         {
