@@ -6,17 +6,19 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalTime;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet(urlPatterns = {"/altavuelo"})
 
 public class altavuelo extends HttpServlet { 
+    
+    private HttpSession sesion;
    /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -67,8 +69,9 @@ public class altavuelo extends HttpServlet {
           ResultSet rs = statement.executeQuery("select * from vuelos where id_vuelo ='"+numerovuelo+"'");
           
           if (rs.next()) {
-              String mensaje = "A flight with that number already exists.";
-              response.sendRedirect("error.jsp?error=" + mensaje);
+              sesion = request.getSession(false);
+              sesion.setAttribute("error", "5");
+              response.sendRedirect("error.jsp");
           } else {
               statement.executeUpdate("insert into vuelos values('"+numerovuelo+"','"+compania+"','"+origen+"','"+horasalida+"','"+destino+"','"+horallegada+"')");
               response.sendRedirect("menu.jsp");

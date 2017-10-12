@@ -3,27 +3,25 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registro</title>
+        <title>Register</title>
+        <link rel="stylesheet" media="screen" href="register.css">
     </head>
     <body>
         <form action="register" method="post">
-            <div>
-                <label for="name"> Name: </label>
+            <div class="container">
+                <label for="name"> Username </label>
                 <input type="text" name="name" required/>                
-            </div>
-            
-            <div>
+
                 <label for="password"> Password: </label>
                 <input type="password" name="password" required/>
-            </div>
-            
-            <div>
+
                 <label for="password"> Repeat Password: </label>
                 <input type="password" name="password1" required/>
-            </div>
+ 
            
-            <div>
-                <input type="submit" value="Submit">
+                <div class="clearfix">
+                   <button type="submit" class="signupbtn">Sign Up</button> 
+                </div>
             </div>    
         </form>
     </body>

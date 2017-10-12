@@ -35,10 +35,11 @@
         </form>
         <% 
             try {
-                ArrayList<vuelo> lista = (ArrayList)request.getAttribute("vuelos");
+                HttpSession sesion = request.getSession(false);
+                ArrayList<vuelo> lista = (ArrayList)sesion.getAttribute("vuelos");
                 vuelo vuelo = lista.get(0); //throws an exception if empty 
         %>
-        <table width = 100%>
+        <table>
             <tr bgcolor="e7e7e7">
                 <td><strong>Numero Vuelo</strong></td>
                 <td><strong>Compañia</strong></td>
@@ -48,9 +49,7 @@
                 <td><strong>Hora Llegada</strong></td>
          
             </tr> 
-        <%
-            for (int i=0; i<lista.size(); ++i) {
-                %>
+        <%for (int i=0; i<lista.size(); ++i) {%>
                 <tr>
                     <td><%=lista.get(i).getIdvuelo()%></td>
                     <td><%=lista.get(i).getCompania()%></td>
@@ -59,12 +58,9 @@
                     <td><%=lista.get(i).getDestino()%></td>
                     <td><%=lista.get(i).getHoraLlegada()%></td> 
                 </tr>
-                <% ++i;          
-            }    
+          <%}    
             }catch(NullPointerException e){
-                %><FONT>There are no current flights to display. </FONT><%
-
-            } %>
+                %><FONT>There are no current flights to display. </FONT><%} %>
         </table>
     </body>
 </html>

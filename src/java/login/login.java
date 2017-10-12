@@ -19,6 +19,8 @@ import javax.servlet.http.HttpSession;
 
 
 public class login extends HttpServlet {
+    
+    private HttpSession sesion;
 
     /**
      * Processes requests for both HTTP
@@ -69,8 +71,9 @@ public class login extends HttpServlet {
 
           }
           else {
-              String mensaje = "The user does not exist.";
-              response.sendRedirect("error.jsp?error=" + mensaje);
+              sesion = request.getSession(false);
+              sesion.setAttribute("error", "1");
+              response.sendRedirect("error.jsp");
           }
         }
         catch(SQLException e)

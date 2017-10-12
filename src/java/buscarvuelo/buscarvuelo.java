@@ -6,18 +6,22 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalTime;
-import javax.servlet.RequestDispatcher;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet(urlPatterns = {"/buscarvuelo"})
 
 public class buscarvuelo extends HttpServlet { 
+    
+    
+    private HttpSession sesion;
+    
    /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -52,79 +56,106 @@ public class buscarvuelo extends HttpServlet {
           String origen = request.getParameter("origen");
           String destino = request.getParameter("destino");
           
-          System.out.println("numero de vuelo="+numerovuelo);
-          System.out.println("companyia="+compania);
-          System.out.println("origen="+origen);
-          System.out.println("destino="+destino);
-          
           ResultSet rs; 
           if (numerovuelo.equals("")) {
               if (compania.equals("")) {
                   if (origen.equals("")) {
                       if (destino.equals("")) {
-                         rs = statement.executeQuery("Select * from vuelos");
+                         rs = statement.executeQuery("Select * from vuelos"); //Buscar todo (parametros todos vacíos)
                       }
-                      else {rs = statement.executeQuery("Select * from vuelos where destino='"+destino+"'");} 
+                      else {
+                          rs = statement.executeQuery("Select * from vuelos where destino='"+destino+"'"); //Buscar solo por destino
+                      } 
                   }
                   else {
-                      if (destino.equals("")) {rs = statement.executeQuery("Select * from vuelos where origen='"+origen+"'");}
-                      else {rs = statement.executeQuery("Select * from vuelos where destino='"+destino+"' and origen='"+origen+"'");}
+                      if (destino.equals("")) {
+                          rs = statement.executeQuery("Select * from vuelos where origen='"+origen+"'"); //Buscar solo por origen
+                      }
+                      else {
+                          rs = statement.executeQuery("Select * from vuelos where destino='"+destino+"' and origen='"+origen+"'"); //Buscar por origen y destino
+                      }
                   }
               }
               else {
                   if (origen.equals("")) {
-                      if (destino.equals("")) {rs = statement.executeQuery("Select * from vuelos where companyia='"+compania+"'"); }
-                      else {rs = statement.executeQuery("Select * from vuelos where companyia='"+compania+"' and destino='"+destino+"'");}
+                      if (destino.equals("")) {
+                          rs = statement.executeQuery("Select * from vuelos where companyia='"+compania+"'"); //Buscar solo por compañia
+                      }
+                      else {
+                          rs = statement.executeQuery("Select * from vuelos where companyia='"+compania+"' and destino='"+destino+"'"); //Buscar por compañia y destino
+                      }
                   }
                   else {
-                      if (destino.equals("")) {rs = statement.executeQuery("Select * from vuelos where companyia='"+compania+"' and origen='"+origen+"'");}
-                      else {rs = statement.executeQuery("Select * from vuelos where companyia='"+compania+"' and destino='"+destino+"' and origen='"+origen+"'");}
+                      if (destino.equals("")) {
+                          rs = statement.executeQuery("Select * from vuelos where companyia='"+compania+"' and origen='"+origen+"'"); //Buscar por compañia y origen
+                      }
+                      else {
+                          rs = statement.executeQuery("Select * from vuelos where companyia='"+compania+"' and destino='"+destino+"' and origen='"+origen+"'"); //Buscar por compañia, origen y destino
+                      }
                   }
               }
           }
           else {
               if (compania.equals("")) {
                   if (origen.equals("")) {
-                      if (destino.equals("")) {rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+"'");}
-                      else {rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+" and destino='"+destino+"'");} 
+                      if (destino.equals("")) {
+                          rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+"'"); //Buscar por numero de vuelo
+                      }
+                      else {
+                          rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+"' and destino='"+destino+"'"); //Buscar por numero de vuelo y destino
+
+                      } 
                   }
                   else {
-                      if (destino.equals("")) {rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+" and origen='"+origen+"'");}
-                      else {rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+" and destino='"+destino+"' and origen='"+origen+"'");}
+                      if (destino.equals("")) {
+                          rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+"' and origen='"+origen+"'"); //Buscar por numero de vuelo y origen
+                          
+                      }
+                      else {
+                          rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+"' and destino='"+destino+"' and origen='"+origen+"'"); //Buscar por numero de vuelo, destino y origen
+                          
+                      }
                   }
               }
               else {
                   if (origen.equals("")) {
-                      if (destino.equals("")) {rs = statement.executeQuery("Select * from vuelos id_vuelo='"+numerovuelo+" and where companyia='"+compania+"'"); }
-                      else {rs = statement.executeQuery("Select * from vuelos id_vuelo='"+numerovuelo+" and where companyia='"+compania+"' and destino='"+destino+"'");}
+                      if (destino.equals("")) {
+                          rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+"' and companyia='"+compania+"'"); //Buscar por numero de vuelo y compañia
+                          
+                      }
+                      else {
+                          rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+"' and companyia='"+compania+"' and destino='"+destino+"'"); //Buscar por numero de vuelo, compañia y destino
+                          
+                      }
                   }
                   else {
-                      if (destino.equals("")) {rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+" and companyia='"+compania+"' and origen='"+origen+"'");}
-                      else {rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+" and companyia='"+compania+"' and destino='"+destino+"' and origen='"+origen+"'");}
+                      if (destino.equals("")) {
+                          rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+"' and companyia='"+compania+"' and origen='"+origen+"'"); //Buscar por numero de vuelo, compañia y origen
+                          
+                      }
+                      else {
+                          rs = statement.executeQuery("Select * from vuelos where id_vuelo='"+numerovuelo+"' and companyia='"+compania+"' and destino='"+destino+"' and origen='"+origen+"'"); //Buscar todo
+                          
+                      }
                   }
-              }
-              
+              } 
           }
           if (rs.next()) {
-              int size = rs.getRow();
-              vuelo[] vuelo = new vuelo[size];
-              int i = 0;
+              vuelo vuelo1;
+              ArrayList<vuelo> vuelo = new ArrayList<>();
+              vuelo1 = new vuelo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+              vuelo.add(vuelo1);
               while (rs.next()) {
-                  vuelo[i] = new vuelo(
-                          rs.getInt(0), 
-                          rs.getString(1), 
-                          rs.getString(2), 
-                          rs.getString(3), 
-                          rs.getString(4), 
-                          rs.getString(5));
-                  i++;
+                  vuelo1 = new vuelo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+                  vuelo.add(vuelo1);
               }
-              request.setAttribute("vuelos", vuelo);
-              RequestDispatcher dispatcher = request.getRequestDispatcher("/buscarvuelo.jsp");
-              dispatcher.forward(request, response);
+              sesion = request.getSession(false);
+              sesion.setAttribute("vuelos", vuelo);
+              response.sendRedirect("buscarvuelo.jsp");
           } else {
-              String mensaje = "There is no flight with these characteristics.";
-              response.sendRedirect("error.jsp?error=" + mensaje);
+              sesion = request.getSession(false);
+              sesion.setAttribute("error", "4");
+              response.sendRedirect("error.jsp");
           }
         } 
         catch(SQLException | ClassNotFoundException e)

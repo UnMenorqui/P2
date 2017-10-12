@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 
 public class register extends HttpServlet{
     
+    private HttpSession sesion;
     
    /**
      * Processes requests for both HTTP
@@ -65,13 +66,15 @@ public class register extends HttpServlet{
                  response.sendRedirect("login.jsp");
              }
              else {
-                 String mensaje = "The user already exists.";
-                 response.sendRedirect("error.jsp?error=" + mensaje);
+              sesion = request.getSession(false);
+              sesion.setAttribute("error", "2");
+              response.sendRedirect("error.jsp");
              }
           }
           else {
-              String mensaje = "The two passwords are not the same.";
-              response.sendRedirect("error.jsp?error=" + mensaje);
+              sesion = request.getSession(false);
+              sesion.setAttribute("error", "3");
+              response.sendRedirect("error.jsp");
           }
         } 
         catch(SQLException | ClassNotFoundException e)
