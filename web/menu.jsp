@@ -12,7 +12,7 @@
              <a href="altavuelo.jsp"> Alta Vuelo </a>
         </div>
         <div>
-             <a href="login.jsp"> Alta Hotel </a>
+             <a href="altahotel.jsp"> Alta Hotel </a>
         </div>
         <div>
              <a href="buscarvuelo.jsp"> Busca Vuelo </a>

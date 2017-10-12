@@ -1,4 +1,4 @@
-package altavuelo;
+package altahotel;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebServlet(urlPatterns = {"/altavuelo"})
+@WebServlet(urlPatterns = {"/altahotel"})
 
-public class altavuelo extends HttpServlet { 
+public class altahotel extends HttpServlet { 
     
     private HttpSession sesion;
    /**
@@ -48,13 +48,16 @@ public class altavuelo extends HttpServlet {
           Statement statement = connection.createStatement();
           statement.setQueryTimeout(30);  // set timeout to 30 sec.
           
-          
-          String numerovuelo = request.getParameter("numero");
-          String compania = request.getParameter("compañia");
-          String origen = request.getParameter("origen");
-          String horasalida = request.getParameter("horasalida");
-          String destino = request.getParameter("destino");
-          String horallegada = request.getParameter("horallegada");
+          String id_hotel = request.getParameter("id_hotel");
+          String nombrehotel = request.getParameter("nombrehotel");
+          String cadenahotelera = request.getParameter("cadenahotelera");
+          String calle = request.getParameter("calle");
+          String numero = request.getParameter("numero");
+          String codigopostal = request.getParameter("codigopostal");
+          String ciudad = request.getParameter("ciudad");
+          String provincia = request.getParameter("provincia");
+          String pais = request.getParameter("pais");
+          String num_habitaciones = request.getParameter("numerohabitaciones");
           
           
           /** Comparar Horas llegada/salida
@@ -67,14 +70,14 @@ public class altavuelo extends HttpServlet {
           }
           **/
           
-          ResultSet rs = statement.executeQuery("select * from vuelos where id_vuelo ='"+numerovuelo+"'");
+          ResultSet rs = statement.executeQuery("select * from hoteles where id_hotel ='"+id_hotel+"'");
           
           if (rs.next()) {
               sesion = request.getSession(false);
               sesion.setAttribute("error", "5");
               response.sendRedirect("error.jsp");
           } else {
-              statement.executeUpdate("insert into vuelos values('"+numerovuelo+"','"+compania+"','"+origen+"','"+horasalida+"','"+destino+"','"+horallegada+"')");
+              statement.executeUpdate("insert into hoteles values('"+id_hotel+"','"+nombrehotel+"','"+calle+"','"+numero+"','"+codigopostal+"','"+ciudad+"','"+provincia+"','"+pais+"')");
               response.sendRedirect("menu.jsp");
           }
         } 
