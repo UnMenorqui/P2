@@ -4,24 +4,32 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
-        <link rel="stylesheet" media="screen" href="login.css">
+
+	<link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <form action="login" method="post">
-            
-            <div class="imgcontainer">
-                <img src="student_login.png" alt="Avatar" class="avatar">
-            </div>
-            
             <div class="container">
-                    <label><b>Username</b></label>
+                <div class="top">
+                    <h1 id="title" class="hidden"><span id="logo">Travel Agency</span></h1>
+                </div>
+                <div class="login-box">
+                    <div class="box-header">
+                        <h2>Log In</h2>
+                    </div>
+                    <label for="username">Username</label>
+                    <br/>
                     <input type="text" placeholder="Enter Username" name="name" required>
-
-                    <label><b>Password</b></label>
+                    <br/>
+                    <label for="password">Password</label>
+                    <br/>
                     <input type="password" placeholder="Enter Password" name="password" required>
-
+                    <br/>
                     <button type="submit">Login</button>
-            </div>           
+                    <br/>
+                    <a href="register.jsp"><p class="small"> Don't you have an account?</p></a>
+                </div>   
+            </div>
         </form>
     </body>
 </html>

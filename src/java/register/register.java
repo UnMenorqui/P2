@@ -47,7 +47,8 @@ public class register extends HttpServlet{
           // create a database connection
           //connection = DriverManager.getConnection("jdbc:sqlite:F:\\AD\\Pràctica 2\\BD\\exemple.db");
           //connection = DriverManager.getConnection("jdbc:sqlite:/Users/aleixabrieprat/Documents/FIB/7e quadrimestre/ad/lab/practica 2/p2.db"); //Mac Aleix
-          connection = DriverManager.getConnection("jdbc:sqlite:/Users/Toni/Documents/Universitat/AD/LAB/P2/p2.db");
+          connection = DriverManager.getConnection("jdbc:sqlite:/Users/Toni/Documents/Universitat/AD/LAB/P2/p2.db"); //Mac Toni
+          
           Statement statement = connection.createStatement();
           statement.setQueryTimeout(30);  // set timeout to 30 sec.
                     
@@ -58,6 +59,9 @@ public class register extends HttpServlet{
           String username = request.getParameter("name");
           String password = request.getParameter("password");
           String passwd = request.getParameter("password1");
+          
+          System.out.println(password);
+          System.out.println(passwd);
           
           if (password.equals(passwd)) {
              ResultSet rs = statement.executeQuery("select * from usuarios where id_usuario ='"+username+"'");

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : altahotel
-    Created on : 12-oct-2017, 14:02:44
-    Author     : Toni
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

@@ -1,7 +1,7 @@
 <%-- 
     Document   : buscarhotel
-    Created on : 12-oct-2017, 14:46:17
-    Author     : Toni
+    Created on : 14-oct-2017, 15:49:31
+    Author     : aleixabrieprat
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

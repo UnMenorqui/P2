@@ -5,33 +5,59 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Buscar Vuelo</title>
+        <title>Search Flight</title>
+        
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <link rel="stylesheet" href="css/tabla.css" type="text/css">
+        <link rel="stylesheet" href="css/menu.css" type="text/css">
+        
     </head>
     <body>
         <form action="buscarvuelo" method="post">
-            <div>
-                <label for="numerovuelo"> Numero de vuelo: </label>
-                <input type="text" name="numero"/>                
-            </div>
+            <ul>
+                <li><a href="menu.jsp">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Flights</a>
+                    <div class="dropdown-content">
+                        <a href="altavuelo.jsp">Register Flight</a>
+                        <a href="buscarvuelo.jsp">Search Flight</a>
+                    </div> 
+                </li>
             
-            <div>
-                <label for="compañia"> Compañia: </label>
-                <input type="text" name="compania"/>
-            </div>
+                <li class="dropdown">
+                    <a href="#">Hotels</a>
+                    <div class="dropdown-content">
+                        <a href="altavuelo.jsp">Register Hotel</a>
+                        <a href="buscarvuelo.jsp">Search Hotel</a>
+                    </div> 
+                </li>
+                <li><a href="">Log Out</a></li>
+            </ul>
             
-            <div>
-                <label for="origen"> Origen: </label>
-                <input type="text" name="origen"/>
-            </div>
-            
-            <div>
-                <label for="password"> Destino: </label>
-                <input type="text" name="destino"/>
-            </div>
-            
-            <div>
-                <input type="submit" value="Search">
-            </div>   
+            <div class="container">
+                <div class="login-box">
+                    <div class="box-header">
+                        <h2>Search Flight</h2>
+                    </div>
+                    <label for="numerovuelo"> Flight number: </label>
+                    <br/>
+                    <input type="text" name="numero"/>
+                    <br/>
+                    <label for="compañia"> Company </label>
+                    <br/>
+                    <input type="text" name="compania"/>
+                    <br/>
+                    <label for="origen"> Origin </label>
+                    <br/>
+                    <input type="text" name="origen"/>
+                    <br/>
+                    <label for="destino"> Destination </label>
+                    <br/>
+                    <input type="text" name="destino"/>
+                    <br/>
+                    <button type="submit">Search Flight</button>
+                    <br/>
+                </div>    
         </form>
         <% 
             try {
@@ -39,14 +65,14 @@
                 ArrayList<vuelo> lista = (ArrayList)sesion.getAttribute("vuelos");
                 vuelo vuelo = lista.get(0); //throws an exception if empty 
         %>
-        <table>
-            <tr bgcolor="e7e7e7">
-                <td><strong>Numero Vuelo</strong></td>
-                <td><strong>Compañia</strong></td>
-                <td><strong>Origen</strong></td>
-                <td><strong>Hora Salida</strong></td>
-                <td><strong>Destino</strong></td>
-                <td><strong>Hora Llegada</strong></td>
+        <table id="customers">
+            <tr>
+                <th><strong>Flight Number</strong></th>
+                <th><strong>Company</strong></th>
+                <th><strong>Origin</strong></th>
+                <th><strong>Departure Time</strong></th>
+                <th><strong>Destination</strong></th>
+                <th><strong>Arrival Time</strong></th>
          
             </tr> 
         <%for (int i=0; i<lista.size(); ++i) {%>
@@ -59,8 +85,7 @@
                     <td><%=lista.get(i).getHoraLlegada()%></td> 
                 </tr>
           <%}    
-            }catch(NullPointerException e){
-                %><FONT>There are no current flights to display. </FONT><%} %>
+            }catch(NullPointerException e){} %>
         </table>
     </body>
 </html>
