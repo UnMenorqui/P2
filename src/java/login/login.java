@@ -53,7 +53,7 @@ public class login extends HttpServlet {
                     
           statement.executeUpdate("create table if not exists usuarios (id_usuario string primary key, password string)");
           statement.executeUpdate("create table if not exists vuelos (id_vuelo integer primary key, companyia string, origen string, hora_salida string, destino string, hora_llegada string)");
-          statement.executeUpdate("create table if not exists hoteles (id_hotel integer primary key, nom_hotel string, cadena string,numb_hab integer,calle string, numero integer,codigo_postal string,ciudad string,provincia string,pais string)");
+          statement.executeUpdate("create table if not exists hoteles (id_hotel integer primary key, nom_hotel string, cadena string,calle string, numero integer,codigo_postal string,ciudad string,provincia string,pais string,numb_hab integer)");
           
           String username = request.getParameter("name"); //works with tag name=""
           //System.out.println("username: " + username);

@@ -77,7 +77,7 @@ public class altahotel extends HttpServlet {
               sesion.setAttribute("error", "5");
               response.sendRedirect("error.jsp");
           } else {
-              statement.executeUpdate("insert into hoteles values('"+id_hotel+"','"+nombrehotel+"','"+calle+"','"+numero+"','"+codigopostal+"','"+ciudad+"','"+provincia+"','"+pais+"')");
+              statement.executeUpdate("insert into hoteles values('"+id_hotel+"','"+nombrehotel+"','"+cadenahotelera+"','"+calle+"','"+numero+"','"+codigopostal+"','"+ciudad+"','"+provincia+"','"+pais+"','"+num_habitaciones+"')");
               response.sendRedirect("menu.jsp");
           }
         } 
