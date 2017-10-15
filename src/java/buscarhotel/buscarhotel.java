@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebServlet(urlPatterns = {"/buscarvuelo"})
+@WebServlet(urlPatterns = {"/buscarhotel"})
 
 public class buscarhotel extends HttpServlet { 
     
@@ -687,13 +687,278 @@ public class buscarhotel extends HttpServlet {
                                           }
                                           else {
                                               if (num_habitaciones.equals("")) {
-                                                  
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and pais='"+pais+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and pais='"+pais+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                      }
+                                      else {
+                                          if (pais.equals("")) {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and provincia='"+provincia+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and provincia='"+provincia+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                          else {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and provincia='"+provincia+"' and pais='"+pais+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and provincia='"+provincia+"' and pais='"+pais+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                      }
+                                  }
+                                  else {
+                                      if (provincia.equals("")) {
+                                          if (pais.equals("")) {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and ciudad='"+ciudad+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and ciudad='"+ciudad+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                          else {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and ciudad='"+ciudad+"' and pais='"+pais+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and ciudad='"+ciudad+"' and pais='"+pais+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                      }
+                                      else {
+                                          if (pais.equals("")) {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and ciudad='"+ciudad+"' and provincia='"+provincia+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and ciudad='"+ciudad+"' and provincia='"+provincia+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                          else {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and ciudad='"+ciudad+"' and provincia='"+provincia+"' and pais='"+pais+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and ciudad='"+ciudad+"' and provincia='"+provincia+"' and pais='"+pais+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                              else {
+                                  if (ciudad.equals("")) {
+                                      if (provincia.equals("")) {
+                                          if (pais.equals("")) {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and codigo_postal='"+codigopostal+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and codigo_postal='"+codigopostal+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                          else {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and codigo_postal='"+codigopostal+"' and pais='"+pais+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and codigo_postal='"+codigopostal+"' and pais='"+pais+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                      }
+                                      else {
+                                          if (pais.equals("")) {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and codigo_postal='"+codigopostal+"' and provincia='"+provincia+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and codigo_postal='"+codigopostal+"' and provincia='"+provincia+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                          else {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and codigo_postal='"+codigopostal+"' and provincia='"+provincia+"' and pais='"+pais+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and codigo_postal='"+codigopostal+"' and provincia='"+provincia+"' and pais='"+pais+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                      }
+                                  }
+                                  else {
+                                      if (provincia.equals("")) {
+                                          if (pais.equals("")) {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and codigo_postal='"+codigopostal+"' and ciudad='"+ciudad+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and codigo_postal='"+codigopostal+"' and ciudad='"+ciudad+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                          else {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and codigo_postal='"+codigopostal+"' and ciudad='"+ciudad+"' and pais='"+pais+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and codigo_postal='"+codigopostal+"' and ciudad='"+ciudad+"' and pais='"+pais+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                      }
+                                      else {
+                                          if (pais.equals("")) {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and codigo_postal='"+codigopostal+"' and ciudad='"+ciudad+"' and provincia='"+provincia+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and codigo_postal='"+codigopostal+"' and ciudad='"+ciudad+"' and provincia='"+provincia+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                          else {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and codigo_postal='"+codigopostal+"' and ciudad='"+ciudad+"' and provincia='"+provincia+"' and pais='"+pais+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and codigo_postal='"+codigopostal+"' and ciudad='"+ciudad+"' and provincia='"+provincia+"' and pais='"+pais+"' and numb_hab='"+num_habitaciones+"'");
                                               }
                                           }
                                       }
                                   }
                               }
                           }
+                          else {
+                              if (codigopostal.equals("")) {
+                                  if (ciudad.equals("")) {
+                                      if (provincia.equals("")) {
+                                          if (pais.equals("")) {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                          else {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and pais='"+pais+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and pais='"+pais+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                      }
+                                      else {
+                                          if (pais.equals("")) {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and provincia='"+provincia+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and provincia='"+provincia+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                          else {
+                                              if (num_habitaciones.equals("")) {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and provincia='"+provincia+"' and pais='"+pais+"'");
+                                              }
+                                              else {
+                                                  rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and provincia='"+provincia+"' and pais='"+pais+"' and numb_hab='"+num_habitaciones+"'");
+                                              }
+                                          }
+                                      }
+                                  }
+                                  else {
+                                    if (provincia.equals("")) {
+                                            if (pais.equals("")) {
+                                                if (num_habitaciones.equals("")) {
+                                                    rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and ciudad='"+ciudad+"'");
+                                                }
+                                                else {
+                                                    rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and ciudad='"+ciudad+"' and numb_hab='"+num_habitaciones+"'");
+                                                }
+                                            }
+                                            else {
+                                                if (num_habitaciones.equals("")) {
+                                                    rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and ciudad='"+ciudad+"' and pais='"+pais+"'");
+                                                }
+                                                else {
+                                                    rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and ciudad='"+ciudad+"' and pais='"+pais+"' and numb_hab='"+num_habitaciones+"'");
+                                                }
+                                            }
+                                        }
+                                    else {
+                                        if (pais.equals("")) {
+                                            if (num_habitaciones.equals("")) {
+                                                rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and ciudad='"+ciudad+"' and provincia='"+provincia+"'");
+                                            }
+                                            else {
+                                                rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and ciudad='"+ciudad+"' and provincia='"+provincia+"' and numb_hab='"+num_habitaciones+"'");
+                                            }
+                                        }
+                                        else {
+                                            if (num_habitaciones.equals("")) {
+                                                rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and ciudad='"+ciudad+"' and provincia='"+provincia+"' and pais='"+pais+"'");
+                                            }
+                                            else {
+                                                rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and ciudad='"+ciudad+"' and provincia='"+provincia+"' and pais='"+pais+"' and numb_hab='"+num_habitaciones+"'");
+                                            }
+                                        }
+                                    }
+                                  }
+                              }
+                              if (ciudad.equals("")) {
+                                  if (provincia.equals("")) {
+                                      if (pais.equals("")) {
+                                          if (num_habitaciones.equals("")) {
+                                              rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and codigo_postal='"+codigopostal+"'");
+                                          }
+                                          else {
+                                              rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and codigo_postal='"+codigopostal+"' and numb_hab='"+num_habitaciones+"'");
+                                          }
+                                      }
+                                      else {
+                                          if (num_habitaciones.equals("")) {
+                                              rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and codigo_postal='"+codigopostal+"' and pais='"+pais+"'");
+                                          }
+                                          else {
+                                              rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and codigo_postal='"+codigopostal+"' and pais='"+pais+"' and numb_hab='"+num_habitaciones+"'");
+                                          }
+                                      }
+                                  }
+                                  else {
+                                      if (pais.equals("")) {
+                                          if (num_habitaciones.equals("")) {
+                                              rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and codigo_postal='"+codigopostal+"' and provincia='"+provincia+"'");
+                                          }
+                                          else {
+                                              rs = statement.executeQuery("Select * from hoteles where cadena='"+cadenahotelera+"' and numero='"+numero+"' and codigo_postal='"+codigopostal+"' and provincia='"+provincia+"' and numb_hab='"+num_habitaciones+"'");
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+              else {
+                  if (cadenahotelera.equals("")) {
+                      if (ciudad.equals("")) {
+                          rs = statement.executeQuery("Select * from hoteles where nom_hotel='"+nombrehotel+"'");
+                      }
+                      else {
+                          rs = statement.executeQuery("Select * from hoteles where nom_hotel='"+nombrehotel+"' and ciudad='"+ciudad+"'");
+                      }
+                  }
+                  else {
+                      if (ciudad.equals("")) {
+                          rs = statement.executeQuery("Select * from hoteles where nom_hotel='"+nombrehotel+"' and cadena='"+cadenahotelera+"'");
+                      }
+                      else {
+                          rs = statement.executeQuery("Select * from hoteles where nom_hotel='"+nombrehotel+"' and cadena='"+cadenahotelera+"' and ciudad='"+ciudad+"'");
                       }
                   }
               }

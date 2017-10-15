@@ -24,8 +24,8 @@
                 <li class="dropdown">
                     <a href="#">Hotels</a>
                     <div class="dropdown-content">
-                        <a href="altavuelo.jsp">Register Hotel</a>
-                        <a href="buscarvuelo.jsp">Search Hotel</a>
+                        <a href="altahotel.jsp">Register Hotel</a>
+                        <a href="buscarhotel.jsp">Search Hotel</a>
                     </div> 
                 </li>
                 <li><a href="">Log Out</a></li>
