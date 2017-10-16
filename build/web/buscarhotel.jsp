@@ -39,19 +39,19 @@
                     <div class="box-header">
                         <h2>Search Hotel</h2>
                     </div>
-                    <label for="numerovuelo"> Hotel name </label>
+                    <label for="nombrehotel"> Hotel name </label>
                     <br/>
-                    <input type="text" name="nom"/>
+                    <input type="text" name="nombrehotel"/>
                     <br/>
-                    <label for="compañia"> Hotels Chain </label>
+                    <label for="cadenahotelera"> Hotels Chain </label>
                     <br/>
-                    <input type="text" name="cadena"/>
+                    <input type="text" name="cadenahotelera"/>
                     <br/>
-                    <label for="origen"> Hotel City </label>
+                    <label for="ciudad"> Hotel City </label>
                     <br/>
-                    <input type="text" name="city"/>
+                    <input type="text" name="ciudad"/>
                     <br/>
-                    <button type="submit">Search Flight</button>
+                    <button type="submit">Search Hotel</button>
                     <br/>
                 </div>    
         </form>
@@ -63,16 +63,31 @@
         %>
         <table id="customers">
             <tr>
+                <th><strong>Hotel ID</strong></th>
                 <th><strong>Hotel Name</strong></th>
                 <th><strong>Hotel Chain</strong></th>
-                <th><strong>Hotel City</strong></th>
+                <th><strong>Nº Rooms</strong></th>
+                <th><strong>Street</strong></th>
+                <th><strong>Number</strong></th>
+                <th><strong>Postal Code</strong></th>
+                <th><strong>City</strong></th>
+                <th><strong>Province</strong></th>
+                <th><strong>Country</strong></th>
          
             </tr> 
         <%for (int i=0; i<lista.size(); ++i) {%>
                 <tr>
+                    <td><%=lista.get(i).getIdhotel()%></td>
                     <td><%=lista.get(i).getNombrehotel()%></td>
                     <td><%=lista.get(i).getCadenaHotelera()%></td>
+                    <td><%=lista.get(i).getNum_Habitaciones()%></td>
+                    <td><%=lista.get(i).getCalle()%></td>
+                    <td><%=lista.get(i).getNumero()%></td>
+                    <td><%=lista.get(i).getCodigoPostal()%></td>
                     <td><%=lista.get(i).getCiudad()%></td>
+                    <td><%=lista.get(i).getProvincia()%></td>
+                    <td><%=lista.get(i).getPais()%></td>
+                    
                 </tr>
           <%}    
             }catch(NullPointerException e){} %>

@@ -47,21 +47,22 @@ public class buscarhotel extends HttpServlet {
           // create a database connection
           //connection = DriverManager.getConnection("jdbc:sqlite:F:\\AD\\Pràctica 2\\BD\\exemple.db");
           //connection = DriverManager.getConnection("jdbc:sqlite:/Users/aleixabrieprat/Documents/FIB/7e quadrimestre/ad/lab/practica 2/p2.db"); //Mac Aleix
-          //connection = DriverManager.getConnection("jdbc:sqlite:/Users/Toni/Documents/Universitat/AD/LAB/P2/p2.db"); //Mac Toni
+          connection = DriverManager.getConnection("jdbc:sqlite:/Users/Toni/Documents/Universitat/AD/LAB/P2/p2.db"); //Mac Toni
           Statement statement = connection.createStatement();
           statement.setQueryTimeout(30);  // set timeout to 30 sec.
           
           
-          String id_hotel = request.getParameter("id_hotel");
+          //String id_hotel = request.getParameter("id_hotel");
           String nombrehotel = request.getParameter("nombrehotel");
+          System.out.println("Nombrehotel: " +nombrehotel);
           String cadenahotelera = request.getParameter("cadenahotelera");
-          String calle = request.getParameter("calle");
-          String numero = request.getParameter("numero");
-          String codigopostal = request.getParameter("codigopostal");
+          //String calle = request.getParameter("calle");
+          //String numero = request.getParameter("numero");
+          //String codigopostal = request.getParameter("codigopostal");
           String ciudad = request.getParameter("ciudad");
-          String provincia = request.getParameter("provincia");
+          //String provincia = request.getParameter("provincia");
           String pais = request.getParameter("pais");
-          String num_habitaciones = request.getParameter("numerohabitaciones");
+          //String num_habitaciones = request.getParameter("numerohabitaciones");
           
           ResultSet rs; 
           
