@@ -48,7 +48,7 @@
                     <br/>
                     <input type="text" name="origen" required />
                     <br/>
-                    <label for="password"> departure time </label>
+                    <label for="password"> Departure time </label>
                     <br/>
                     <input type="time" name="horasalida" required value="00:00"/>
                     <br/>
