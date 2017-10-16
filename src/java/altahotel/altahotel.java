@@ -49,26 +49,36 @@ public class altahotel extends HttpServlet {
           statement.setQueryTimeout(30);  // set timeout to 30 sec.
           
           String id_hotel = request.getParameter("id_hotel");
+          System.out.println("Id_hotel: " + id_hotel);
+          
           String nombrehotel = request.getParameter("nombrehotel");
+          System.out.println("nombrehotel:: " + nombrehotel);
+          
           String cadenahotelera = request.getParameter("cadenahotelera");
+          System.out.println("cadenahotelera: " + cadenahotelera);
+          
+          String num_habitaciones = request.getParameter("num_habitaciones");
+          System.out.println("num_habitaciones: " + num_habitaciones);
+          
           String calle = request.getParameter("calle");
+          System.out.println("calle: " + calle);
+          
           String numero = request.getParameter("numero");
+          System.out.println("numero: " + numero);
+          
           String codigopostal = request.getParameter("codigopostal");
+          System.out.println("CP:: " + codigopostal);
+          
           String ciudad = request.getParameter("ciudad");
+          System.out.println("ciudad: " + ciudad);
+          
           String provincia = request.getParameter("provincia");
+          System.out.println("provincia: " + provincia);
+          
           String pais = request.getParameter("pais");
-          String num_habitaciones = request.getParameter("numerohabitaciones");
+          System.out.println("pais: " + pais);
           
           
-          /** Comparar Horas llegada/salida
-          
-          LocalTime llegada = LocalTime.parse(horallegada);
-          LocalTime salida = LocalTime.parse(horasalida);
-          
-          if (salida.compareTo(llegada) > 0) {
-              response.sendRedirect("error.jsp");
-          }
-          **/
           
           ResultSet rs = statement.executeQuery("select * from hoteles where id_hotel ='"+id_hotel+"'");
           
@@ -77,7 +87,7 @@ public class altahotel extends HttpServlet {
               sesion.setAttribute("error", "5");
               response.sendRedirect("error.jsp");
           } else {
-              statement.executeUpdate("insert into hoteles values('"+id_hotel+"','"+nombrehotel+"','"+cadenahotelera+"','"+calle+"','"+numero+"','"+codigopostal+"','"+ciudad+"','"+provincia+"','"+pais+"','"+num_habitaciones+"')");
+              statement.executeUpdate("insert into hoteles values('"+id_hotel+"','"+nombrehotel+"','"+cadenahotelera+"','"+num_habitaciones+"','"+calle+"','"+numero+"','"+codigopostal+"','"+ciudad+"','"+provincia+"','"+pais+"')");
               response.sendRedirect("menu.jsp");
           }
         } 

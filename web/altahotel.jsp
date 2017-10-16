@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="css/menu.css" type="text/css">
     </head>
     <body>
-        <form action="altavuelo" method="post">
+        <form action="altahotel" method="post">
             <ul>
                 <li><a href="menu.jsp">Home</a></li>
                 <li class="dropdown">
@@ -38,7 +38,7 @@
                     </div>
                     <label for="numerovuelo"> Hotel Identifier </label>
                     <br/>
-                    <input type="text" name="id_hotel" required/>
+                    <input type="text" name="id_hotel" required pattern="[0-9]"/>
                     <br/>
                     <label for="compañia"> Hotel Name </label>
                     <br/>
@@ -50,7 +50,7 @@
                     <br/>
                     <label for="horallegada"> Number of Rooms </label>
                     <br/>
-                    <input type="text" name="num_habitaciones" required/>
+                    <input type="text" name="num_habitaciones" required pattern="[0-9]"/>
                     <br/>
                     <label for="password"> Hotel Street </label>
                     <br/>
@@ -58,11 +58,11 @@
                     <br/>
                     <label for="destino"> Hotel Number </label>
                     <br/>
-                    <input type="text" name="numero" required/>
+                    <input type="text" name="numero" required pattern="[0-9]"/>
                     <br/>
                     <label for="horallegada"> Postal Code </label>
                     <br/>
-                    <input type="text" name="codigopostal" required/>
+                    <input type="text" name="codigopostal" required pattern="[0-9]"/>
                     <br/>
                     <label for="horallegada"> City </label>
                     <br/>
