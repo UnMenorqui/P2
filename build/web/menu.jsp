@@ -25,7 +25,7 @@
                     <a href="buscarhotel.jsp">Search Hotel</a>
                 </div> 
             </li>
-            <li><a href="">Log Out</a></li>
+            <li><a href="logout">Log Out</a></li>
         </ul>
     </body>
 </html>

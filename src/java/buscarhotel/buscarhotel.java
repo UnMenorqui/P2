@@ -120,7 +120,7 @@ public class buscarhotel extends HttpServlet {
               response.sendRedirect("buscarhotel.jsp");
           } else {
               sesion = request.getSession(false);
-              sesion.setAttribute("error", "4");
+              sesion.setAttribute("error", "6");
               response.sendRedirect("error.jsp");
           }
         } 
